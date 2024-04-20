@@ -2,22 +2,12 @@ variable "vpc_cidr" {
   description = "VPC CIDR"
   type        = string
   default     = "10.0.0.0/16"
-
-  validation {
-    condition     = can(cidrhost(var.vpc_cidr, 0))
-    error_message = "Invalid CIDR block argument"
-  }
 }
 
 variable "region" {
   description = "VPC region"
   type        = string
   default     = "us-east-1"
-
-  validation {
-    condition     = can(regex("[a-z][a-z]-[a-z]+-[1-9]", var.region))
-    error_message = "Invalid AWS Region name"
-  }
 }
 
 variable "resources" {
@@ -43,11 +33,6 @@ variable "rtb_cidr" {
   description = "Route Table CIDR"
   type        = string
   default     = "0.0.0.0/0"
-
-  validation {
-    condition     = can(cidrhost(var.rtb_cidr, 0))
-    error_message = "Invalid CIDR block argument"
-  }
 }
 
 variable "environment" {
